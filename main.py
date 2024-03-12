@@ -34,11 +34,11 @@ def receive_messages(process_id, port, vector):
             conn, _ = s.accept()
             data = conn.recv(1024).decode()
             received_message, received_vector_str = data.split('|')
-            print(f"P{process_id} received message: {received_message} {received_vector_str}, own vector: {vector}")
             received_vector_splitted = received_vector_str[1:-1].split(', ')
             received_vector = [int(x) for x in received_vector_splitted]
             vector.update(received_vector)
             vector.increment()
+            print(f"P{process_id} received message: {received_message} {received_vector_str}, own vector: {vector}")
             print(f"P{process_id} updated vector: {vector}")
 
 def main(process_id, port):
