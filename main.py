@@ -33,7 +33,7 @@ def receive_messages(process_id, port, vector):
         while True:
             conn, _ = s.accept()
             data = conn.recv(1024).decode()
-            print('Data: ', conn)
+            
             sender_port, received_message, received_vector_str = data.split('|')
             received_vector_splitted = received_vector_str[1:-1].split(',')
             received_vector = [int(x) for x in received_vector_splitted]
