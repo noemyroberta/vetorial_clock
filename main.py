@@ -39,7 +39,7 @@ def receive_messages(process_id, port, vector):
             vector.update(received_vector)
             vector.increment()
             sender_port = int(sender_port_str)
-            print(f"P{process_id} received message {received_message} {received_vector_str} from {sender_port - 5000}")
+            print(f"P{process_id} received message {received_message} {received_vector_str} from P{sender_port - 5000}")
             print(f"P{process_id} updated vector: {vector}")
 
 def main(process_id, port):
